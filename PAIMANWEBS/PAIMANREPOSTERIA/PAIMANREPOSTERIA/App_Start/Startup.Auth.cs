@@ -59,11 +59,11 @@ namespace PAIMANREPOSTERIA
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "969018006686-36f0b6p6m0el2l6534mh6nglo4qjc3ba.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

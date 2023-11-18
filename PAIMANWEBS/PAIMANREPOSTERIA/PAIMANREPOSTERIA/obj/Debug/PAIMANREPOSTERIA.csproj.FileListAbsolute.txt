@@ -90,3 +90,5 @@ C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTER
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Memory.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\Microsoft.Owin.Hosting.dll
+C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\Microsoft.Owin.Hosting.xml

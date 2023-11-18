@@ -25,6 +25,11 @@ namespace PAIMANREPOSTERIA.Account
                 //manager.SendEmail(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>.");
 
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
+                using (PAIMANREPOSTERIA.Logic.ShoppingCartActions usersShoppingCart = new PAIMANREPOSTERIA.Logic.ShoppingCartActions())
+                {
+                    String cartId = usersShoppingCart.GetCartId();
+                    usersShoppingCart.MigrateCart(cartId, user.Id);
+                }
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
             else 

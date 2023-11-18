@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using PAIMANREPOSTERIA.Models;
+using PAIMANREPOSTERIA.Logic;
 
 namespace PAIMANREPOSTERIA
 {
@@ -74,6 +75,14 @@ namespace PAIMANREPOSTERIA
 
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())
+            {
+                string cartStr = string.Format("Cart ({0})", usersShoppingCart.GetCount());
+                cartCount.InnerText = cartStr;
+            }
+        }
         public IQueryable<Category> GetCategories()
         {
             var _db = new PAIMANREPOSTERIA.Models.ProductContext();
