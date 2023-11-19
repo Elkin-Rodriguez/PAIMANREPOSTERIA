@@ -47,6 +47,8 @@
                 <a class="navbar-brand" runat="server" href="~/">PAIMAN REPOSTERIA</a>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                          <li><a runat="server" id="adminLink" visible="false" 
+                                                                                href="~/Admin/AdminPage">Admin</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>

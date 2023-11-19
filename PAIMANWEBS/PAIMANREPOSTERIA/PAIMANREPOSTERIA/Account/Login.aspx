@@ -45,6 +45,8 @@
                     </div>
                 </div>
                 <p>
+                      <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" NavigateUrl="~/Account/Forgot.aspx">¿Olvidó su contraseña?</asp:HyperLink>
+                <p>
                     <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse como usuario nuevo</asp:HyperLink>
                 </p>
                 <p>
