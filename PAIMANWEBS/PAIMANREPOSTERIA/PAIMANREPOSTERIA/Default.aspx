@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PAIMANREPOSTERIA._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" href="Content/Styles.css">
         <h1><%: Title %>.</h1>
         <h2>PAIMAN can help you find the perfect gift.</h2>
         <p class="lead">We're all about transportation toys. You can order 

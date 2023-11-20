@@ -1,0 +1,35 @@
+﻿/* Agrega un fondo de pantalla a toda la página */
+body {
+    background-image: url(/Catalog/gif/PAIMAN9.gif);
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f9fa; /* Color de fondo de la barra de navegación */
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-text {
+    margin-left: 10px; /* Ajusta el margen según sea necesario */
+}
+
+/* Estilos adicionales para el contenido de la página */
+h1, h2, p {
+    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+}
+
+
+/* Estilos adicionales para el contenido de la página */
+h1, h2, p {
+    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+}

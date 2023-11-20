@@ -36,10 +36,14 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                    <div id="TitleContent" style="text-align: center">
+                        <a runat="server" href="~/">
+                         <asp:Image  ID="Image1" runat="server" ImageUrl="~/Catalog/Imagenes/PAIMAN REPOSTERIA.png" BorderStyle="None" style="width: 100px; height: auto;"/>
+                        </a>  
+                    <br />  
+                </div>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -73,12 +77,10 @@
                     </asp:LoginView>
                 </div>
             </div>
-            <div id="TitleContent" style="text-align: center">
-            <a runat="server" href="~/">
-                <asp:Image  ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" BorderStyle="None" />
-            </a>  
-            <br />  
-        </div>
+            
+
+
+
             <div id="CategoryMenu" style="text-align: center">       
             <asp:ListView ID="categoryList"  
                 ItemType="PAIMANREPOSTERIA.Models.Category" 
