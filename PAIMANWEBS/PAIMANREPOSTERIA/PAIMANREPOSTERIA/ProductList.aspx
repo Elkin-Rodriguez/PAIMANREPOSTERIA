@@ -8,13 +8,13 @@
                 <h2><%: Page.Title %></h2>
             </hgroup>
 
-            <asp:ListView ID="productList" runat="server" 
+            <asp:ListView ID="productList" runat="server"
                 DataKeyNames="ProductID" GroupItemCount="4"
-                ItemType="PAIMANREPOSTERIA.Models.Product" SelectMethod="GetProducts">
+                ItemType="PAIMANREPOSTERIA.Models.Product" SelectMethod="GetProducts" OnSelectedIndexChanged="productList_SelectedIndexChanged">
                 <EmptyDataTemplate>
                     <table >
                         <tr>
-                            <td>No data was returned.</td>
+                            <td>No hay Datos.</td>
                         </tr>
                     </table>
                 </EmptyDataTemplate>
@@ -32,8 +32,8 @@
                             <tr>
                                 <td>
                                     <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
-                                        <img src="/Catalog/Images/Thumbs/<%#:Item.ImagePath%>"
-                                            width="100" height="75" style="border: solid" /></a>
+                                        <img src="Catalog\Catalog\<%#:Item.ImagePath%>"
+                                              width="300" height="300" style="border: solid" />
                                 </td>
                             </tr>
                             <tr>
@@ -50,7 +50,7 @@
                                     <br />
                                     <a href="/AddToCart.aspx?productID=<%#:Item.ProductID %>">               
                                         <span class="ProductListItem">
-                                            <b>Add To Cart<b>
+                                            <b>Añadir al Carrito<b>
                                         </span>           
                                     </a>
                                 </td>
@@ -73,7 +73,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
                             </tr>
                             <tr></tr>
                         </tbody>

@@ -60,9 +60,11 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Productos</a>
                                 <ul class="dropdown-menu">
                                       <li><a class="dropdown-item" runat="server" href="~/ProductList">Todos</a></li>
-                                      <li><a class="dropdown-item" href="#">Pateles</a></li>
-                                      <li><a class="dropdown-item" href="#">Postres</a></li>
-                                      <li><a class="dropdown-item" href="#">Galletas</a></li> 
+                                      <a href="/ProductList.aspx?id=1" class="dropdown-item">Postres</a>
+                                      <a href="/ProductList.aspx?id=2" class="dropdown-item">Pasteles</a>
+                                      <a href="/ProductList.aspx?id=3" class="dropdown-item">Galletas</a>
+
+
                                 </ul>
                         <li><a runat="server" href="~/ShoppingCart" ID="cartCount">&nbsp;</a></li>
                     </ul>

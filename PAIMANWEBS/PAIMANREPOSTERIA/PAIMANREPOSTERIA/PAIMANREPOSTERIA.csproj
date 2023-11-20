@@ -174,6 +174,7 @@
     <Content Include="Catalog\Catalog\Galleta estrella.png" />
     <Content Include="Catalog\Catalog\Galletas de jengibre.png" />
     <Content Include="Catalog\Catalog\Galletas Macarons.png" />
+    <Content Include="Catalog\Catalog\Parfait.png" />
     <Content Include="Catalog\Catalog\Pastel de chocolate.png" />
     <Content Include="Catalog\Catalog\Pastel de frutas.png" />
     <Content Include="Catalog\Catalog\Pastel de queso.png" />
