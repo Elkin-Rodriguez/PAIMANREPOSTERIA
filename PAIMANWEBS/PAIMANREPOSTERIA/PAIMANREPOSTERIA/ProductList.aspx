@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
          CodeBehind="ProductList.aspx.cs" Inherits="PAIMANREPOSTERIA.ProductList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" href="Content/Styles.css">
     <section>
         <div>
             <hgroup>

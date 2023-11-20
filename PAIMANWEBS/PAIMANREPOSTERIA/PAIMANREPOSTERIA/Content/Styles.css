@@ -1,35 +1,54 @@
-﻿/* Agrega un fondo de pantalla a toda la página */
+﻿/* Estilos comunes para todas las páginas */
 body {
-    background-image: url(/Catalog/gif/PAIMAN9.gif);
+    background-image: url('/Catalog/gif/PAIMAN9.gif');
     background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
+/* Estilos adicionales para el contenido de la página */
+h1, h2, p {
+    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+}
+
 /* Estilos para la barra de navegación */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f8f9fa; /* Color de fondo de la barra de navegación */
+    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el último valor para cambiar la opacidad (0 es transparente, 1 es opaco) */
+    padding: 15px; /* Ajusta el espaciado interno según sea necesario */
 }
 
-.navbar-content {
-    display: flex;
-    align-items: center;
+/* Estilos para el texto de la barra de navegación */
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white !important; /* Color del texto en blanco */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Borde blanco que varía desde blanco claro a blanco nítido */
 }
 
-.navbar-text {
-    margin-left: 10px; /* Ajusta el margen según sea necesario */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
 }
 
-/* Estilos adicionales para el contenido de la página */
-h1, h2, p {
-    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+.image-container {
+    position: relative;
 }
 
-
-/* Estilos adicionales para el contenido de la página */
-h1, h2, p {
-    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+.image-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra alrededor del cuadro */
+    text-align: center;
+    max-width: 80%; /* Ajusta el ancho máximo según sea necesario */
+    color: white ; /* Color del texto negro */
+}
+.carousel-caption {
+    color: aqua !important; /* Cambia el color del texto a negro */
+    background-color: rgba(0,0,0, 0.5); /* Fondo semitransparente blanco */
 }

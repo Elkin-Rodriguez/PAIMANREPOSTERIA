@@ -19,10 +19,7 @@ C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTER
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\Microsoft.Managed.Core.targets
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Security.Cryptography.Primitives.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Text.Encoding.CodePages.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\System.Threading.Tasks.Extensions.dll
 C:\Users\Overlord\OneDrive - SENA\GIT\PAIMANWEBS\PAIMANREPOSTERIA\PAIMANREPOSTERIA\bin\roslyn\vbc.exe

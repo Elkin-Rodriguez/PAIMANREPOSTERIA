@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using PAIMANREPOSTERIA.Models;
 using PAIMANREPOSTERIA.Logic;
+using WebGrease.Css.Ast;
 
 namespace PAIMANREPOSTERIA
 {
@@ -72,11 +73,13 @@ namespace PAIMANREPOSTERIA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (HttpContext.Current.User.IsInRole("canEdit"))
             {
                 adminLink.Visible = true;
             }
         }
+
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
