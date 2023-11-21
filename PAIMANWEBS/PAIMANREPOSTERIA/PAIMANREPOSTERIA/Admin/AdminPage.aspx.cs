@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PAIMANREPOSTERIA.Models;
 using PAIMANREPOSTERIA.Logic;
+using System.Diagnostics;
+
 using System.IO;
 
 namespace PAIMANREPOSTERIA.Admin
@@ -24,7 +26,62 @@ namespace PAIMANREPOSTERIA.Admin
             {
                 LabelRemoveStatus.Text = "Product removed!";
             }
+
         }
+
+        protected void DropDownManageProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Tu lógica cuando se selecciona un elemento en el DropDownList
+            Debug.WriteLine("Selected Value: " + DropDownManageProducts.SelectedValue);
+
+            if (DropDownManageProducts.SelectedValue == "AddProduct")
+            {
+                AddProductPanel.Visible = true;
+                RemoveProductPanel.Visible = false;
+                EditProductPanel.Visible = false;
+                SelectProductPanel.Visible = false; // Asegúrate de agregar esta línea
+            }
+            else if (DropDownManageProducts.SelectedValue == "RemoveProduct")
+            {
+                RemoveProductPanel.Visible = true;
+                AddProductPanel.Visible = false;
+                EditProductPanel.Visible = false;
+                SelectProductPanel.Visible = false; // Asegúrate de agregar esta línea
+            }
+            else if (DropDownManageProducts.SelectedValue == "EditProductPanel")
+            {
+                EditProductPanel.Visible = true;
+                AddProductPanel.Visible = false;
+                RemoveProductPanel.Visible = false;
+                SelectProductPanel.Visible = false; // Asegúrate de agregar esta línea
+
+                // Cargar la lista de productos en el DropDownList
+                DropDownRemoveProduct.DataBind();
+
+                // Obtener el ID del producto seleccionado para editar
+                int productIdToEdit = Convert.ToInt32(DropDownRemoveProduct.SelectedValue);
+
+                // Lógica para cargar los detalles del producto en controles de edición
+                LoadProductDetailsForEditing(productIdToEdit);
+            }
+            else if (DropDownManageProducts.SelectedValue == "SelectProductPanel")
+            {
+                // Asegúrate de agregar la lógica necesaria para mostrar el panel de selección de productos
+                SelectProductPanel.Visible = true;
+                AddProductPanel.Visible = false;
+                RemoveProductPanel.Visible = false;
+                EditProductPanel.Visible = false;
+            }
+            else
+            {
+                AddProductPanel.Visible = false;
+                RemoveProductPanel.Visible = false;
+                EditProductPanel.Visible = false;
+                SelectProductPanel.Visible = false; // Asegúrate de agregar esta línea
+            }
+        }
+
+
 
         protected void AddProductButton_Click(object sender, EventArgs e)
         {
@@ -110,30 +167,194 @@ namespace PAIMANREPOSTERIA.Admin
                 var myItem = (from c in _db.Products where c.ProductID == productId select c).FirstOrDefault();
                 if (myItem != null)
                 {
+                    // Rutas de archivos
                     string imagePath = Server.MapPath("~/Catalog/Images/" + myItem.ImagePath);
-
-                    // Mover el archivo a la carpeta "Removed"
                     string removedFolderPath = Server.MapPath("~/Removed/");
                     string newFilePath = Path.Combine(removedFolderPath, myItem.ImagePath);
+
+                    // Verificar si la carpeta "Removed" existe, si no, crearla
+                    if (!Directory.Exists(removedFolderPath))
+                    {
+                        Directory.CreateDirectory(removedFolderPath);
+                    }
 
                     // Verificar si el archivo ya existe en la carpeta "Removed"
                     if (!File.Exists(newFilePath))
                     {
-                        File.Move(imagePath, newFilePath);
+                        try
+                        {
+                            // Mover el archivo a la carpeta "Removed"
+                            File.Move(imagePath, newFilePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Manejar la excepción de manera apropiada
+                            Console.WriteLine("Error al mover el archivo: " + ex.ToString());
+                        }
                     }
 
+                    // Eliminar el producto de la base de datos
                     _db.Products.Remove(myItem);
                     _db.SaveChanges();
 
-                    // Reload the page.
+                    // Recargar la página.
                     string pageUrl = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.Count() - Request.Url.Query.Count());
                     Response.Redirect(pageUrl + "?ProductAction=remove");
                 }
                 else
                 {
-                    LabelRemoveStatus.Text = "Unable to locate product.";
+                    LabelRemoveStatus.Text = "No se pudo encontrar el producto.";
                 }
             }
         }
+
+        protected void SelectProductButton_Click(object sender, EventArgs e)
+        {
+            int productIdToEdit = Convert.ToInt32(DropDownSelectProduct.SelectedValue);
+
+            if (productIdToEdit > 0)
+            {
+                // Lógica para cargar los detalles del producto en controles de edición
+                LoadProductDetailsForEditing(productIdToEdit);
+                EditProductPanel.Visible = true;
+                AddProductPanel.Visible = false;
+                RemoveProductPanel.Visible = false;
+                SelectProductPanel.Visible = false;
+            }
+            else
+            {
+                // Manejar el caso en el que no se ha seleccionado un producto
+                LabelEditStatus.Text = "Please select a product.";
+            }
+        }
+
+        protected void EditProductButton_Click(object sender, EventArgs e)
+        {
+             // Cargar la lista de productos en el DropDownList
+    DropDownRemoveProduct.DataBind();
+
+    // Obtener el ID del producto seleccionado para editar
+    int productIdToEdit = Convert.ToInt32(DropDownRemoveProduct.SelectedValue);
+
+    // Lógica para cargar los detalles del producto en controles de edición
+    LoadProductDetailsForEditing(productIdToEdit);
+    SelectProductPanel.Visible = true;
+    EditProductPanel.Visible = true;
+    AddProductPanel.Visible = false;
+    RemoveProductPanel.Visible = false;
+        }
+
+        private void LoadProductDetailsForEditing(int productId)
+        {
+            using (var _db = new PAIMANREPOSTERIA.Models.ProductContext())
+            {
+                // Obtener el producto de la base de datos usando el ID
+                var productToEdit = _db.Products.Find(productId);
+
+                // Verificar si el producto existe
+                if (productToEdit != null)
+                {
+                    // Cargar los detalles del producto en los controles de edición
+                    EditProductName.Text = productToEdit.ProductName;
+                    EditProductDescription.Text = productToEdit.Description;
+                    EditProductPrice.Text = productToEdit.UnitPrice.ToString();
+                    DropDownRemoveProduct.SelectedValue = productToEdit.ProductID.ToString();
+                }
+                else
+                {
+                    // Manejar el caso en el que el producto no se encuentra
+                    // Puedes mostrar un mensaje o realizar otras acciones según tus necesidades
+                    LabelEditStatus.Text = "Product not found.";
+                }
+            }
+        }
+
+        protected void UpdateProductButton_Click(object sender, EventArgs e)
+        {
+            // Obtener el ID del producto que se está editando
+            int productIdToEdit = Convert.ToInt32(DropDownRemoveProduct.SelectedValue);
+
+            using (var _db = new PAIMANREPOSTERIA.Models.ProductContext())
+            {
+                // Obtener el producto de la base de datos usando el ID
+                var productToEdit = _db.Products.Find(productIdToEdit);
+
+                // Verificar si el producto existe
+                if (productToEdit != null)
+                {
+                    // Validar y actualizar los detalles del producto con la información de los controles de edición
+                    if (ValidateAndUpdateProduct(productToEdit))
+                    {
+                        // Guardar los cambios en la base de datos
+                        _db.SaveChanges();
+
+                        // Mostrar un mensaje de éxito u otras acciones según tus necesidades
+                        LabelEditStatus.Text = "Product updated successfully.";
+
+                        // Recargar la lista de productos después de la edición
+                        // Esto actualiza el DropDownList con los productos actualizados
+                        DropDownRemoveProduct.DataBind();
+                    }
+                }
+                else
+                {
+                    // Manejar el caso en el que el producto no se encuentra
+                    // Puedes mostrar un mensaje o realizar otras acciones según tus necesidades
+                    LabelEditStatus.Text = "Product not found.";
+                }
+            }
+        }
+
+        private bool ValidateAndUpdateProduct(Product product)
+        {
+            // Validar los datos antes de la actualización
+            if (IsValidProductData())
+            {
+                // Actualizar los detalles del producto con la información de los controles de edición
+                product.ProductName = EditProductName.Text;
+                product.Description = EditProductDescription.Text;
+
+                decimal price;
+                if (Decimal.TryParse(EditProductPrice.Text, out price))
+                {
+                    product.UnitPrice = (double?)price;
+                    // Otros campos si los tienes
+
+                    return true; // La validación y actualización fueron exitosas
+                }
+                else
+                {
+                    // Manejar el caso en el que el precio no es válido
+                    LabelEditStatus.Text = "Invalid price format.";
+                    return false;
+                }
+            }
+            else
+            {
+                // Manejar el caso en el que los datos no son válidos
+                LabelEditStatus.Text = "Invalid data.";
+                return false;
+            }
+        }
+
+        private bool IsValidProductData()
+        {
+            // Agregar lógica de validación según tus necesidades
+            // Puedes validar que los campos no estén vacíos, que cumplan con ciertos formatos, etc.
+            return true; // Cambiar según tus necesidades de validación
+        }
+        protected void LoadProductDetailsButton_Click(object sender, EventArgs e)
+        {
+            // Obtener el ID del producto seleccionado
+            int selectedProductId = Convert.ToInt32(DropDownSelectProductForEdit.SelectedValue);
+
+            // Obtener y cargar los detalles del producto seleccionado
+            LoadProductDetailsForEditing(selectedProductId);
+
+            // Mostrar el panel de edición
+            EditProductPanel.Visible = true;
+        }
+
+
     }
 }

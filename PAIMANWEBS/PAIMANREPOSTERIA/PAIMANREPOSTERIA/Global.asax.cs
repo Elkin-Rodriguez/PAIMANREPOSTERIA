@@ -26,6 +26,10 @@ namespace PAIMANREPOSTERIA
             RoleActions roleActions = new RoleActions();
             roleActions.AddUserAndRole();
 
+            using (var context = new ProductContext())
+            {
+                context.Database.Initialize(true);
+            }
 
         }
     }
