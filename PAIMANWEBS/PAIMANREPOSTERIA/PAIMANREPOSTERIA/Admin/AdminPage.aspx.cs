@@ -136,12 +136,12 @@ namespace PAIMANREPOSTERIA.Admin
                 }
                 else
                 {
-                    LabelAddStatus.Text = "Unable to add new product to database.";
+                    LabelAddStatus.Text = "No se puede agregar un nuevo producto a la base de datos.";
                 }
             }
             else
             {
-                LabelAddStatus.Text = "Unable to accept file type.";
+                LabelAddStatus.Text = "No se puede aceptar el tipo de archivo.";
             }
         }
 
@@ -224,7 +224,7 @@ namespace PAIMANREPOSTERIA.Admin
             else
             {
                 // Manejar el caso en el que no se ha seleccionado un producto
-                LabelEditStatus.Text = "Please select a product.";
+                LabelEditStatus.Text = "Por Favor Seleccione Un Producto";
             }
         }
 
@@ -264,7 +264,7 @@ namespace PAIMANREPOSTERIA.Admin
                 {
                     // Manejar el caso en el que el producto no se encuentra
                     // Puedes mostrar un mensaje o realizar otras acciones según tus necesidades
-                    LabelEditStatus.Text = "Product not found.";
+                    LabelEditStatus.Text = "Producto no encontrado.";
                 }
             }
         }
@@ -289,7 +289,7 @@ namespace PAIMANREPOSTERIA.Admin
                         _db.SaveChanges();
 
                         // Mostrar un mensaje de éxito u otras acciones según tus necesidades
-                        LabelEditStatus.Text = "Product updated successfully.";
+                        LabelEditStatus.Text = "Producto actualizado exitosamente.";
 
                         // Recargar la lista de productos después de la edición
                         // Esto actualiza el DropDownList con los productos actualizados
@@ -300,7 +300,7 @@ namespace PAIMANREPOSTERIA.Admin
                 {
                     // Manejar el caso en el que el producto no se encuentra
                     // Puedes mostrar un mensaje o realizar otras acciones según tus necesidades
-                    LabelEditStatus.Text = "Product not found.";
+                    LabelEditStatus.Text = "Producto no encontrado.";
                 }
             }
         }
@@ -325,14 +325,14 @@ namespace PAIMANREPOSTERIA.Admin
                 else
                 {
                     // Manejar el caso en el que el precio no es válido
-                    LabelEditStatus.Text = "Invalid price format.";
+                    LabelEditStatus.Text = "Formato de precio no válido.";
                     return false;
                 }
             }
             else
             {
                 // Manejar el caso en el que los datos no son válidos
-                LabelEditStatus.Text = "Invalid data.";
+                LabelEditStatus.Text = "Datos inválidos.";
                 return false;
             }
         }
@@ -343,17 +343,26 @@ namespace PAIMANREPOSTERIA.Admin
             // Puedes validar que los campos no estén vacíos, que cumplan con ciertos formatos, etc.
             return true; // Cambiar según tus necesidades de validación
         }
-        protected void LoadProductDetailsButton_Click(object sender, EventArgs e)
+        
+        protected void DropDownSelectProductForEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Obtener el ID del producto seleccionado
             int selectedProductId = Convert.ToInt32(DropDownSelectProductForEdit.SelectedValue);
 
-            // Obtener y cargar los detalles del producto seleccionado
-            LoadProductDetailsForEditing(selectedProductId);
+            if (selectedProductId > 0)
+            {
+                // Cargar los detalles del producto para la edición
+                LoadProductDetailsForEditing(selectedProductId);
 
-            // Mostrar el panel de edición
-            EditProductPanel.Visible = true;
+                // Mostrar el panel de edición
+                EditProductPanel.Visible = true;
+            }
+            else
+            {
+                // Manejar el caso en que no se ha seleccionado un producto
+                LabelEditStatus.Text = "Por favor, selecciona un producto.";
+            }
         }
+
 
 
     }

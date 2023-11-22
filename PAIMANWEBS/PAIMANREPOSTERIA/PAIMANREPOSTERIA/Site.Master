@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - PAIMANREPOSTERIA</title>
@@ -37,20 +37,28 @@
         </asp:ScriptManager>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm custom-navbar">
             <div class="container">
-                    <div id="TitleContent" style="text-align: center">
-                        <a runat="server" href="~/">
-                         <asp:Image  ID="Image1" runat="server" ImageUrl="~/Catalog/Imagenes/PAIMAN REPOSTERIA.png" BorderStyle="None" style="width: 100px; height: auto;"/>
-                        </a>  
+                <div id="TitleContent" style="text-align: center">
+                    <a runat="server" href="~/">
+                        <asp:Image  ID="Image1" runat="server" ImageUrl="~/Catalog/Imagenes/PAIMAN REPOSTERIA.png" BorderStyle="None" style="width: 100px; height: auto;"/>
+                    </a>  
                     <br />  
                 </div>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" runat="server" href="~/">PAIMAN REPOSTERIA</a>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="nav nav-tabs">
-                        <li><a runat="server" id="adminLink" visible="false" class="nav nav-item" href="~/Admin/AdminPage">Administrador</a></li>
+                        <li class="nav-item dropdown">
+                            <li class="nav-item dropdown">
+                                <%-- Verifica si el usuario tiene el rol "canEdit" --%>
+                                <% if (Context.User.IsInRole("canEdit")) { %>
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Administrador</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" id="adminLink" runat="server" href="~/Admin/AdminPage">Opciones del Administrador</a></li>
+                                     </ul>
+                                <% } %>
+                            </li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
@@ -67,7 +75,7 @@
     
                         <li><a runat="server" href="~/ShoppingCart" ID="cartCount">&nbsp;</a></li>
                     </ul>
-
+    
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="navbar-nav navbar-right">
@@ -85,7 +93,7 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
-            </div>blo
+            </div>
         </nav>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
@@ -101,5 +109,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    </asp:PlaceHolder></body>
+    </asp:PlaceHolder>
+</body>
 </html>

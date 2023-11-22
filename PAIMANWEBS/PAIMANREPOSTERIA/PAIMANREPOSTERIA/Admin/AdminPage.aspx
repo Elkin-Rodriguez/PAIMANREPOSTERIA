@@ -6,7 +6,7 @@
     <!-- Dropdown para seleccionar la acción -->
     <h3>Opciones del Administrador:</h3>
     <asp:DropDownList ID="DropDownManageProducts" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownManageProducts_SelectedIndexChanged">
-        <asp:ListItem Text="Opciones de Productos" Value="" />
+        <asp:ListItem Text="Seleccione una Opcion" Value="" />
         <asp:ListItem Text="Editar Producto" Value="EditProductPanel" />
         <asp:ListItem Text="Agregar Producto" Value="AddProduct" />
         <asp:ListItem Text="Eliminar Producto" Value="RemoveProduct" />
@@ -86,16 +86,16 @@
     <h3>Edita Producto:</h3>
     <!-- Añadir un DropDownList para seleccionar un producto -->
     <asp:DropDownList ID="DropDownSelectProductForEdit" runat="server" 
-        ItemType="PAIMANREPOSTERIA.Models.Product" 
-        SelectMethod="GetProducts" DataTextField="ProductName" 
-        DataValueField="ProductID">
-        <asp:ListItem Text="Selecciona un Producto" Value="" />
-    </asp:DropDownList>
+            ItemType="PAIMANREPOSTERIA.Models.Product" 
+              SelectMethod="GetProducts" DataTextField="ProductName" 
+                DataValueField="ProductID" AutoPostBack="true" 
+            OnSelectedIndexChanged="DropDownSelectProductForEdit_SelectedIndexChanged">
+           <asp:ListItem Text="Selecciona un Producto" Value="" />
+</asp:DropDownList>
+
 
     <!-- Añadir un botón para cargar los detalles del producto seleccionado -->
-    <asp:Button ID="LoadProductDetailsButton" runat="server" 
-        Text="Cargar Detalles del Producto" 
-        OnClick="LoadProductDetailsButton_Click" />
+    
        <table>
         <tr>
             <td><asp:Label ID="LabelEditName" runat="server">Nombre:</asp:Label></td>
