@@ -1,5 +1,5 @@
-﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
-         CodeBehind="ProductList.aspx.cs" Inherits="PAIMANREPOSTERIA.ProductList" %>
+﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="PAIMANREPOSTERIA.ProductList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="Content/Styles.css">
     <section>
@@ -7,12 +7,11 @@
             <hgroup>
                 <h2><%: Page.Title %></h2>
             </hgroup>
-
             <asp:ListView ID="productList" runat="server"
                 DataKeyNames="ProductID" GroupItemCount="4"
                 ItemType="PAIMANREPOSTERIA.Models.Product" SelectMethod="GetProducts" OnSelectedIndexChanged="productList_SelectedIndexChanged">
                 <EmptyDataTemplate>
-                    <table >
+                    <table>
                         <tr>
                             <td>No hay Datos.</td>
                         </tr>
@@ -28,38 +27,24 @@
                 </GroupTemplate>
                 <ItemTemplate>
                     <td runat="server">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
-                                        <img src="Catalog\Catalog\<%#:Item.ImagePath%>"
-                                              width="300" height="300" style="border: solid" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
-                                        <span>
-                                            <%#:Item.ProductName%>
-                                        </span>
+                        <div class="product-details">
+                            <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
+                                <img src="Catalog\Catalog\<%#:Item.ImagePath%>" width="300" height="300" style="border: solid" />
+                            </a>
+                            <div class="product-info">
+                                <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
+                                    <span><%#:Item.ProductName%></span>
+                                </a>
+                                <br />
+                                <span><b>Precio: </b><%#:String.Format("{0:c}", Item.UnitPrice)%></span>
+                                <br />
+                                <div class="add-to-cart">
+                                    <a href="/AddToCart.aspx?productID=<%#:Item.ProductID %>">
+                                        <span class="ProductListItem"><b>Añadir al Carrito<b></span>
                                     </a>
-                                    <br />
-                                    <span>
-                                        <b>Price: </b><%#:String.Format("{0:c}", Item.UnitPrice)%>
-                                    </span>
-                                    <br />
-                                    <a href="/AddToCart.aspx?productID=<%#:Item.ProductID %>">               
-                                        <span class="ProductListItem">
-                                            <b>Añadir al Carrito<b>
-                                        </span>           
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-                        </p>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </ItemTemplate>
                 <LayoutTemplate>

@@ -1,26 +1,42 @@
 ﻿/* Estilos comunes para todas las páginas */
 body {
     background-image: url('/Catalog/gif/PAIMAN9.gif');
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0; /* Agrega un margen cero para evitar espacios alrededor del cuerpo */
 }
 
 /* Estilos adicionales para el contenido de la página */
 h1, h2, p {
-    color: white; /* Cambia el color del texto para que sea visible en el fondo */
+    color: white;
+    font-size: 20px;
 }
 
 /* Estilos para la barra de navegación */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el último valor para cambiar la opacidad (0 es transparente, 1 es opaco) */
-    padding: 15px; /* Ajusta el espaciado interno según sea necesario */
+    background-color: rgb(4, 0, 91);
+    padding: 15px;
 }
 
 /* Estilos para el texto de la barra de navegación */
 .navbar-brand,
+.navbar-toggler .navbar-nav .navbar-right {
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right, #3366ff, #33ccff);
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff !important;
+}
+
 .navbar-nav .nav-link {
-    color: white !important; /* Color del texto en blanco */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Borde blanco que varía desde blanco claro a blanco nítido */
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background: linear-gradient(to right, #33ccff, #3366ff);
 }
 
 footer {
@@ -40,17 +56,39 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente blanco */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra alrededor del cuadro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    max-width: 80%; /* Ajusta el ancho máximo según sea necesario */
-    color: white ; /* Color del texto negro */
+    max-width: 80%;
+    color: black;
 }
+
 .carousel-caption {
-    color: aqua !important; /* Cambia el color del texto a negro */
-    background-color: rgba(0,0,0, 0.5); /* Fondo semitransparente blanco */
-}     
+    color: aqua !important;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+/* Estilos para los cuadros de texto */
+.product-details {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: white;
+}
 
+/* Estilos para el enlace "Añadir al Carrito" */
+.ProductListItem {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+}
+
+    .ProductListItem:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: black;
+    }
